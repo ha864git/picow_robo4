@@ -1,0 +1,273 @@
+    /* ▼タブ */
+    #tabcontrol a {
+        display: inline-block;
+        /* インラインブロック化 */
+        border-width: 1px 1px 0px 1px;
+        /* 下以外の枠線を引く */
+        border-style: solid;
+        /* 枠線の種類：実線 */
+        border-color: black;
+        /* 枠線の色：黒色 */
+        border-radius: 0.75em 0.75em 0 0;
+        /* 枠線の左上角と右上角だけを丸く */
+        padding: 0.75em 1em;
+        /* 内側の余白 */
+        text-decoration: none;
+        /* リンクの下線を消す */
+        color: black;
+        /* 文字色：黒色 */
+        background-color: white;
+        /* 背景色：白色 */
+        font-weight: bold;
+        /* 太字 */
+        position: relative;
+        /* JavaScriptでz-indexを調整するために必要 */
+    }
+
+    /* ▼タブにマウスポインタが載った際（任意） */
+    #tabcontrol a:hover {
+        text-decoration: underline;
+        /* リンクの下線を引く */
+    }
+
+    /* ▼タブの中身 */
+    #tabbody .pages {
+        width: 325px;
+        height: 510px;
+        border: 1px solid black;
+        /* 枠線：黒色の実線を1pxの太さで引く */
+        margin-top: -1px;
+        /* 上側にあるタブと1pxだけ重ねるために「-1px」を指定 */
+        padding: 1em;
+        /* 内側の余白量 */
+        background-color: white;
+        /* 背景色：白色 */
+        position: relative;
+        /* z-indexを調整するために必要 */
+        z-index: 0;
+        /* 重なり順序を「最も背面」にするため */
+    }
+
+    /* ▼タブの配色 */
+    /* 1つ目のタブとその中身用の配色 */
+    #tabcontrol a:nth-child(1),
+    #tabbody div:nth-child(1).pages {
+        background-color: #ffffdd;
+    }
+
+    /* 2つ目のタブとその中身用の配色 */
+    #tabcontrol a:nth-child(2),
+    #tabbody div:nth-child(2).pages {
+        background-color: #ddffdd;
+    }
+
+    /* 3つ目のタブとその中身用の配色 */
+    #tabcontrol a:nth-child(3),
+    #tabbody div:nth-child(3).pages {
+        background-color: #ddddff;
+    }
+
+    .connect-state {
+        display: flex;
+    }
+
+    .connect-btn {
+        width: 140px;
+        height: 35px;
+        border-radius: 8px;
+        font-size: 14pt;
+        background-color: blue;
+        color: white;
+    }
+
+    /*
+    .connect-btn.display-none {
+        display: none;
+    }
+*/
+    .display-none {
+        display: none;
+    }
+
+    .status {
+        margin-top: 6px;
+        margin-left: 10px;
+        font-size: 14pt;
+    }
+
+    .actbtn {
+        width: 103px;
+        height: 80px;
+        padding: 10px;
+        border-radius: 20px;
+        box-sizing: border-box;
+        border: 1px solid #0e2048;
+        background: #0e4a3d;
+        cursor: pointer;
+        font-size: 24pt;
+        color: white;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .tit {
+        width: 90px;
+    }
+
+    .tit.lft {
+        background: blue;
+    }
+
+    .tit.rit {
+        background: orange;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    td.front {
+        background-color: #f4a005;
+    }
+
+    td.hind {
+        background-color: #fbe0ae;
+    }
+
+    th {
+        background-color: lightgrey;
+        height: 50px;
+    }
+
+    .ctrl_container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .zu {
+        width: 319px;
+        height: 280px;
+    }
+
+    .leg {
+        margin-top: 190px;
+        position: absolute;
+        width: 69px;
+        height: 10px;
+        transform-origin: left 5px;
+    }
+
+    .leg.fr {
+        margin-left: 110px;
+        background: orange;
+    }
+
+    .leg.fl {
+        margin-left: 110px;
+        background: blue;
+    }
+
+    .leg.hr {
+        margin-left: 260px;
+        background: orange;
+    }
+
+    .leg.hl {
+        margin-left: 260px;
+        background: blue;
+    }
+
+    .picow {
+        position: absolute;
+        margin-top: 70px;
+        width: 150px;
+        height: 30px;
+        margin-left: 105px;
+        background: gray;
+    }
+
+    .robobody {
+        position: absolute;
+        margin-top: 100px;
+        width: 240px;
+        height: 105px;
+        margin-left: 65px;
+        background: gray;
+    }
+
+    .robohead {
+        position: absolute;
+        margin-top: 10px;
+        width: 40px;
+        height: 150px;
+        margin-left: 45px;
+        background: gray;
+        transform: rotate(30deg);
+    }
+
+    .inner_container {
+        margin-left: 0px;
+        margin-right: 10px;
+
+
+    }
+
+    input.range {
+        width: 154px;
+    }
+
+    input.ra {
+        width: 100px;
+    }
+
+    .range_btn {
+        width: 26px;
+        height: 26px;
+        border-radius: 13px;
+        font-size: 14pt;
+        background-color: lightgray;
+        color: black;
+        border: none;
+    }
+
+    .lineset {
+        margin: 10px;
+        padding: 10px;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+
+    .range_set {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    .update {
+        width: 90px;
+        height: 35px;
+        border-radius: 8px;
+        font-size: 10pt;
+        background-color: black;
+        color: white;
+    }
+
+    .tit {
+        width: 80px;
+        text-align: center;
+    }
+
+    .tit.lft {
+        background: blue;
+        color: white;
+    }
+
+    .tit.rit {
+        background: orange;
+        color: black;
+    }
+
+    .setang {
+        margin-left: 120px;
+        margin-top: 20px;
+    }

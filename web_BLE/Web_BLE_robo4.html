@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>pico w BLE control panel for quadruped robot</title>
+</head>
+
+<body>
+    <div class="connect-state">
+        <button class="connect-btn" type="button" id="connect">connect</button>
+        <button class="connect-btn display-none" type="button" id="disconnect">disconnect</button>
+        <div class="status" id="status"></div>
+    </div>
+    <p id="tabcontrol">
+        <a href="#tabpage1">PANEL</a>
+        <a href="#tabpage2">DIRECT</a>
+        <a href="#tabpage3">ADJUST</a>
+    </p>
+    <div id="tabbody">
+
+        <!--- TAB1 --->
+        <div class="pages" id="tabpage1">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button type="button" id="btn1" class="actbtn">▲</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="btn2" class="actbtn">◀</button></td>
+                    <td><button type="button" id="btn3" class="actbtn">■</button></td>
+                    <td><button type="button" id="btn4" class="actbtn">▶</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" id="btn5" class="actbtn">▼</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" id="btn6" class="actbtn">▲</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button type="button" id="btn7" class="actbtn">◀</button></td>
+                    <td><button type="button" id="btn8" class="actbtn">■</button></td>
+                    <td><button type="button" id="btn9" class="actbtn">▶</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" id="btn10" class="actbtn">▼</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <!--- TAB2 --->
+        <div class="pages" id="tabpage2">
+            <div class="zu">
+                <div class="picow"></div>
+                <div class="robohead"></div>
+                <div id="leg_fr" class="leg fr"></div>
+                <div id="leg_hr" class="leg hr"></div>
+                <div class="robobody"></div>
+                <div id="leg_fl" class="leg fl"></div>
+                <div id="leg_hl" class="leg hl"></div>
+            </div>
+            <div class="ctrl_container">
+                <div class="inner_container">
+                    <div class="ctrl_container">
+                        <label class="tit rit" for="number_fr">FR</label>
+                        <input class="na" type="text" id="number_fr" name="number_fr" autocomplete="off" size="6" />
+                    </div>
+                    <div class="ctrl_container range_set">
+                        <input class="range_btn" id="range_btn_inc_fr" type="button" value="+">
+                        <input class="ra" type="range" id="range_fr" min="-80" max="80" value="0" aria-label="range_fr"
+                            onchange="range2number('fr')">
+                        <input class="range_btn" id="range_btn_dec_fr" type="button" value="-">
+                    </div>
+                    <div class="ctrl_container">
+                        <label class="tit lft" for="number_fl">FL</label>
+                        <input class="na" type="text" id="number_fl" name="number_fl" autocomplete="off" size="6" />
+                    </div>
+                    <div class="ctrl_container range_set">
+                        <input class="range_btn" id="range_btn_inc_fl" type="button" value="+">
+                        <input class="ra" type="range" id="range_fl" min="-80" max="80" value="0" aria-label="range_fr"
+                            onchange="range2number('fl')">
+                        <input class="range_btn" id="range_btn_dec_fl" type="button" value="-">
+                    </div>
+                </div>
+                <div class="inner_container">
+                    <div class="ctrl_container">
+                        <label class="tit rit" for="number_hr">HR</label>
+                        <input class="na" type="text" id="number_hr" name="number_hr" autocomplete="off" size="6" />
+                    </div>
+                    <div class="ctrl_container range_set">
+                        <input class="range_btn" id="range_btn_inc_hr" type="button" value="+">
+                        <input class="ra" type="range" id="range_hr" min="-80" max="80" value="0" aria-label="range_fr"
+                            onchange="range2number('hr')">
+                        <input class="range_btn" id="range_btn_dec_hr" type="button" value="-">
+                    </div>
+                    <div class="ctrl_container">
+                        <label class="tit lft" for="number_hl">HL</label>
+                        <input class="na" type="text" id="number_hl" name="number_hl" autocomplete="off" size="6" />
+                    </div>
+                    <div class="ctrl_container range_set">
+                        <input class="range_btn" id="range_btn_inc_hl" type="button" value="+">
+                        <input class="ra" type="range" id="range_hl" min="-80" max="80" value="0" aria-label="range_fr"
+                            onchange="range2number('hl')">
+                        <input class="range_btn" id="range_btn_dec_hl" type="button" value="-">
+                    </div>
+                </div>
+            </div>
+            <div class="inner_container">
+                <div class="ctrl_container">
+                    <input class="update setang" type="button" value="UPDATE" onclick="set_angles()">
+                </div>
+            </div>
+        </div>
+
+        <!--- TAB3 --->
+        <div class="pages" id="tabpage3">
+            <datalist id="my-datalist">
+                <option value="80"></option>
+                <option value="81"></option>
+                <option value="82"></option>
+                <option value="83"></option>
+                <option value="84"></option>
+                <option value="85"></option>
+                <option value="86"></option>s
+                <option value="87"></option>
+                <option value="88"></option>
+                <option value="89"></option>
+                <!---- for center mark -----
+                <option value="90"></option>
+                --------------------------->
+                <option value="91"></option>
+                <option value="92"></option>
+                <option value="93"></option>
+                <option value="94"></option>
+                <option value="95"></option>
+                <option value="96"></option>
+                <option value="97"></option>
+                <option value="98"></option>
+                <option value="99"></option>
+                <option value="100"></option>
+            </datalist>
+            <table id="adjust-table" class="display-none">
+                <tr>
+                    <th class="side" colspan="2">RIGHT SIDE</th>
+                </tr>
+                <tr>
+                    <td class="hind">HIND</td>
+                    <td class="front">FRONT</td>
+                </tr>
+                <tr>
+                    <td><input type="range" class="range" list="my-datalist" id="hr_ini" min="80" max="100" value="90"
+                            aria-label="hr_ini"></td>
+                    <td><input type="range" class="range" list="my-datalist" id="fr_ini" min="80" max="100" value="90"
+                            aria-label="fr_ini"></td>
+                </tr>
+                <tr>
+                    <th class="side" colspan="2">LEFT SIDE</th>
+                </tr>
+                <tr>
+                    <td class="front">FRONT</td>
+                    <td class="hind">HIND</td>
+                </tr>
+                <tr>
+                    <td><input type="range" class="range" list="my-datalist" id="fl_ini" min="80" max="100" value="90"
+                            aria-label="fl_ini"></td>
+                    <td><input type="range" class="range" list="my-datalist" id="hl_ini" min="80" max="100" value="90"
+                            aria-label="hl_ini"></td>
+                </tr>
+                <tr>
+                    <th colspan="2"><button class="update" type="button" onclick="set_angles_ini()" />UPDATE</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+</html>
