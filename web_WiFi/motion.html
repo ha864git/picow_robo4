@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>pico w control panel for quadruped robot</title>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <button type="button" class="tab-list-item" onclick="location.href='index.html'">PANEL</button>
+            <button type="button" class="tab-list-item" onclick="location.href='direct.html'">DIRECT</button>
+            <button type="button" class="tab-list-item" onclick="location.href='adjust.html'">ADJUST</button>
+            <button type="button" class="tab-list-item is-btn-active">MOTION</button>
+        </div>
+        <div class="base set_transparent">
+            <div class="forms class1">
+                <table class="frame_list" id="cmd_list"></table>
+                <input class="update write2f" type="button" value="write to file" onclick="update_motions()">
+            </div>
+            <div class="forms class2">
+                <div class="frame_list no_frame">
+                    <input class="update_cmd" id="stopbtn" type="button" value="STOP" onclick="execmd_name('stop')">
+                    <input class="update_cmd" type="button" value="New Command" onclick="add_cmd()">
+                    <input class="update_cmd" type="button" value="Delete Command" onclick="delete_cmd()">
+                </div>
+                <div class="frame_list">
+                    <table class="motionlist" id="mlist"></table>
+                    <label for="playsel">mode</label>
+                    <select id="playsel">
+                        <option>single</option>
+                        <option selected="">repeat</option>
+                    </select>
+                </div>
+                <input class="update trylist" type="button" value="try this list" onclick="try_list()">
+            </div>
+            <div class="forms class3">
+                <div class="zu">
+                    <div class="picow"></div>
+                    <div class="robohead"></div>
+                    <div id="leg_fr" class="leg fr"></div>
+                    <div id="leg_hr" class="leg hr"></div>
+                    <div class="robobody"></div>
+                    <div id="leg_fl" class="leg fl"></div>
+                    <div id="leg_hl" class="leg hl"></div>
+                </div>
+                <div class="ctrl_container lineset">
+                    <div class="inner_container">
+                        <div class="ctrl_container">
+                            <label class="tit rit" for="number_fr">FR</label>
+                            <input class="na" type="text" id="number_fr" name="number_fr" autocomplete="off" size="6" />
+                        </div>
+                        <div class="ctrl_container range_set">
+                            <input class="range_btn" id="range_btn_inc_fr" type="button" value="+">
+                            <input class="ra" type="range" id="range_fr" min="-80" max="80" value="0"
+                                aria-label="range_fr" onchange="range2number('fr')">
+                            <input class="range_btn" id="range_btn_dec_fr" type="button" value="-">
+                        </div>
+                        <div class="ctrl_container">
+                            <label class="tit lft" for="number_fl">FL</label>
+                            <input class="na" type="text" id="number_fl" name="number_fl" autocomplete="off" size="6" />
+                        </div>
+                        <div class="ctrl_container range_set">
+                            <input class="range_btn" id="range_btn_inc_fl" type="button" value="+">
+                            <input class="ra" type="range" id="range_fl" min="-80" max="80" value="0"
+                                aria-label="range_fr" onchange="range2number('fl')">
+                            <input class="range_btn" id="range_btn_dec_fl" type="button" value="-">
+                        </div>
+                        <div class="ctrl_container">
+                            <label class="tit sel">pitch</label>
+                            <select class="selb" id="pitchsel" aria-label="pitch">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inner_container">
+                        <div class="ctrl_container">
+                            <label class="tit rit" for="number_hr">HR</label>
+                            <input class="na" type="text" id="number_hr" name="number_hr" autocomplete="off" size="6" />
+                        </div>
+                        <div class="ctrl_container range_set">
+                            <input class="range_btn" id="range_btn_inc_hr" type="button" value="+">
+                            <input class="ra" type="range" id="range_hr" min="-80" max="80" value="0"
+                                aria-label="range_fr" onchange="range2number('hr')">
+                            <input class="range_btn" id="range_btn_dec_hr" type="button" value="-">
+                        </div>
+                        <div class="ctrl_container">
+                            <label class="tit lft" for="number_hl">HL</label>
+                            <input class="na" type="text" id="number_hl" name="number_hl" autocomplete="off" size="6" />
+                        </div>
+                        <div class="ctrl_container range_set">
+                            <input class="range_btn" id="range_btn_inc_hl" type="button" value="+">
+                            <input class="ra" type="range" id="range_hl" min="-80" max="80" value="0"
+                                aria-label="range_fr" onchange="range2number('hl')">
+                            <input class="range_btn" id="range_btn_dec_hl" type="button" value="-">
+                        </div>
+                    </div>
+                </div>
+                <div class="inner_container">
+                    <div class="ctrl_container">
+                        <input class="update tryset" type="button" value="try this set" onclick="try_line()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="def_url.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+</html>
