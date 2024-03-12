@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pico w control panel for quadruped robot</title>
+</head>
+
+<style>
+    .tab {
+        width: 360px;
+        height: 650px;
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .tab-list {
+        display: flex;
+    }
+
+    .tab-list-item {
+        height: 40px;
+        width: 120px;
+        border-bottom: 4px solid black;
+        line-height: 40px;
+        text-align: center;
+        font-size: 10pt;
+        float: left;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+    }
+
+    .is-btn-active {
+        background-color: black;
+        color: white;
+        border: none;
+    }
+
+    .forms {
+        padding: 10px;
+        margin: auto;
+    }
+
+    .zu {
+        width: 360px;
+        height: 260px;
+    }
+
+    .leg {
+        margin-top: 190px;
+        position: absolute;
+        width: 69px;
+        height: 10px;
+        transform-origin: left 5px;
+    }
+
+    .leg.fr {
+        margin-left: 115px;
+        background: orange;
+    }
+
+    .leg.fl {
+        margin-left: 115px;
+        background: blue;
+    }
+
+    .leg.hr {
+        margin-left: 265px;
+        background: orange;
+    }
+
+    .leg.hl {
+        margin-left: 265px;
+        background: blue;
+    }
+
+    .picow {
+        position: absolute;
+        margin-top: 70px;
+        width: 150px;
+        height: 30px;
+        margin-left: 110px;
+        background: gray;
+    }
+
+    .robobody {
+        position: absolute;
+        margin-top: 100px;
+        width: 240px;
+        height: 105px;
+        margin-left: 70px;
+        background: gray;
+    }
+
+    .robohead {
+        position: absolute;
+        margin-top: 10px;
+        width: 40px;
+        height: 150px;
+        margin-left: 50px;
+        background: gray;
+        transform: rotate(30deg);
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .ta {
+        width: 40px;
+    }
+
+    .na {
+        width: 40px;
+    }
+
+    .tit {
+        width: 90px;
+    }
+
+    .tit.lft {
+        background: blue;
+    }
+
+    .tit.rit {
+        background: orange;
+    }
+
+    input.update {
+        width: 90px;
+        height: 35px;
+        border-radius: 8px;
+        font-size: 10pt;
+        background-color: black;
+        color: white;
+    }
+
+    .trapa {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <button type="button" class="tab-list-item" onclick="location.href='index.html'">PANEL</button>
+            <button type="button" class="tab-list-item is-btn-active">DIRECT</button>
+            <button type="button" class="tab-list-item" onclick="location.href='adjust.html'">ADJUST</button>
+        </div>
+        <div class="zu  trapa">
+            <div class="picow"></div>
+            <div class="robohead"></div>
+            <div class="robobody"></div>
+            <div id="leg_fl" class="leg fl"></div>
+            <div id="leg_hl" class="leg hl"></div>
+            <div id="leg_fr" class="leg fr"></div>
+            <div id="leg_hr" class="leg hr"></div>
+        </div>
+        <div class="forms trapa">
+            <div>
+                <table>
+                    <tr>
+                        <td class="tit rit">FR</td>
+                        <td><input type="number" class="na" id="number_fr" min="-80" max="80" value=""
+                                aria-label="number_fr" onchange="number2range('fr')">
+                        </td>
+                        <td class="tit rit">HR</td>
+                        <td><input type="number" class="na" id="number_hr" min="-80" max="80" value=""
+                                aria-label="number_hr" onchange="number2range('hr')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">+<input class="ra" type="range" id="range_fr" min="-80" max="80" value="90"
+                                aria-label="range_fr" onchange="range2number('fr')">-</td>
+                        <td colspan="2">+<input class="ra" type="range" id="range_hr" min="-80" max="80" value="90"
+                                aria-label="range_hr" onchange="range2number('hr')">-</td>
+                    </tr>
+                    <tr>
+                        <td class="tit lft">FL</td>
+                        <td><input type="number" class="na" id="number_fl" min="-80" max="80" value=""
+                                onchange="number2range('fl')" aria-label="number_fl">
+                        </td>
+                        <td class="tit lft">HL</td>
+                        <td><input type="number" class="na" id="number_hl" min="-80" max="80" value=""
+                                onchange="number2range('hl')" aria-label="number_hl">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">+<input class="ra" type="range" id="range_fl" min="-80" max="80" value="90"
+                                aria-label="range_fl" onchange="range2number('fl')">-</td>
+                        <td colspan="2">+<input class="ra" type="range" id="range_hl" min="-80" max="80" value="90"
+                                aria-label="range_hl" onchange="range2number('hl')">-</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><input class="update" type="button" value="UPDATE" onclick="set_angles()"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="direct.js"></script>
+
+</body>
+
+</html>
